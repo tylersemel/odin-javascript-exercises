@@ -1,24 +1,22 @@
 const palindromes = function (word) {
-    let str = "";
-    let reverse = "";
+    const alphanumeral = "abcdefghijklmnopqrstuvwxyz0123456789";
 
-    for (let i = 0; i < word.length; i++) {
-        if (word[i] !== " " &&
-            ((word[i].toLowerCase() >= "a" && word[i].toLowerCase() <= "z") ||
-            (word[i] >= 0 && word[i].toLowerCase() <= 9))) {
-            str += word[i];
-        }
-    }
+    //want to convert string to array
+    //want to then filter the word so that it contains only correct characters
+    //then turn that string back into an array
 
-    for (let i = str.length - 1; i >= 0; i--) {
-        reverse += str[i];
-    }
+    let str = word
+                .split('')
+                .filter(char => alphanumeral.includes(char.toLowerCase()))
+                .join('');
 
-    if (str.toLowerCase() !== reverse.toLowerCase()) {
-        return false;
-    }
+    let reverse = str
+                    .split('')
+                    .reverse('')
+                    .join('');
 
-    return true;
+    
+    return reverse.toLowerCase() === str.toLowerCase();
 };
 
 // Do not edit below this line
